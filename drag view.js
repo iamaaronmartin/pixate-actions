@@ -16,7 +16,8 @@
 	var swipeResting = 335;
 
 	// Where the swipe view will be pushed away to on dismissal
-	var swipeAway = 375;
+	var swipeAway = 335;
+
 
 // Create a container for all the views
 
