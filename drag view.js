@@ -1,5 +1,5 @@
 /**
- * Alignment: Drag view
+ * Drag view
  * @summary Draggable content layer
  * @description Aligns the selected layer to the top of canvas
  * @author Aaron Martin
@@ -9,15 +9,17 @@
  * @version 1.0
  */
 
-// create a container for all the views
+
+// Create a container for all the views
+
 var swipe = createLayer('Swipe');
 swipe.width = Screen.width + 10;
 swipe.height = Screen.height;
 swipe.backgroundColor = 'transparent';
-swipe.left = -10;
+swipe.left = 335;
 
 
-// drag actions
+// Drag actions on the 'swipe' view
 
 var dragSwipe = createDragInteraction(swipe);
 dragSwipe.direction = DragDirection.horizontal;
@@ -41,7 +43,8 @@ moveSwipeElse.easing = EasingCurve.easeInOutQuadratic;
 moveSwipeElse.duration = 0.3;
 
 
-// create nested-layers inside main swipe view
+// Create the nested-layers inside of the 'swipe' view
+
 var shadowLeft = createLayer('shadow left');
 shadowLeft.width = 10;
 shadowLeft.height = Screen.height;
@@ -55,3 +58,28 @@ content.left = 10;
 content.backgroundColor = 'transparent';
 createScrollInteraction(content);
 
+
+// Create the shadow on the left edge of the 'swipe' view
+
+var SHADOWS = 10;
+var label, view;
+
+for (var i = SHADOWS-1; i >= 0; i--) {
+
+	// the numbering we'll use for layer names
+	label = i;
+
+	view = createLayer('shadow' + label);
+	view.width = 1;
+	view.height = Screen.height;
+	view.x = 0 + i;
+	view.backgroundColor = '#000';
+	view.opacity = 0.0125 * i;
+	nestLayers(shadowLeft, view);
+
+}
+
+
+// Nest all the layers
+
+nestLayers(swipe, shadowLeft, content);
