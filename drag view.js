@@ -10,13 +10,21 @@
  */
 
 
+// Global variables
+
+	// Where the swipe view will begin on screen
+	var swipeResting = 335;
+
+	// Where the swipe view will be pushed away to on dismissal
+	var swipeAway = 375;
+
 // Create a container for all the views
 
 var swipe = createLayer('Swipe');
 swipe.width = Screen.width + 10;
 swipe.height = Screen.height;
-swipe.backgroundColor = 'transparent';
-swipe.left = 335;
+swipe.backgroundColor = '#ffffff';
+swipe.left = swipeResting;
 
 
 // Drag actions on the 'swipe' view
@@ -29,7 +37,7 @@ moveSwipe.basedOn = swipe.dragRelease;
 moveSwipe.animates = AnimationMode.withDuration;
 moveSwipe.condition = 'swipe.x > ' + Screen.width / 2;
 moveSwipe.referenceEdge = Edge.left;
-moveSwipe.toX = 335;
+moveSwipe.toX = swipeAway;
 moveSwipe.easing = EasingCurve.easeInOutQuadratic;
 moveSwipe.duration = 0.3;
 
