@@ -32,6 +32,8 @@ swipe.left = swipeResting;
 
 var dragSwipe = createDragInteraction(swipe);
 dragSwipe.direction = DragDirection.horizontal;
+dragSwipe.min = -10;
+dragSwipe.minReferenceEdge = Edge.left;
 
 var moveSwipe = createMoveAnimation(swipe);
 moveSwipe.basedOn = swipe.dragRelease;
